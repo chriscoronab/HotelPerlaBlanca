@@ -9,63 +9,91 @@
     font-style: normal;
     font-weight: 400;
 }
-header{
+a{
+    color: black;
+}
+nav{
     position: sticky;
     top: 0;
     background-color: white;
     font-size: 25px;
     z-index: 10;
-}
-nav div{
     display: flex;
-    flex-direction: row;
+    justify-content: center;
     align-items: center;
 }
-#logo{
-    width: 20%;
+nav div{
+    width: 5%;
+    margin: 0 1em;
 }
-#home{
-    margin-bottom: 2em;
+nav div img{
+    width: 100%;
 }
-#home p{
+#servicios{
+    width: 60%;
+    margin: 4em auto;
     text-align: center;
-    margin: 2em 8em;
-}
-#home span{
-    text-decoration: underline;
-}
-a{
-    color: black;
 }
 .habitacion{
     border: solid 0.1em rgb(82, 79, 79);
     margin: 0 4em 2em 4em;
     display: flex;
-    flex-direction: row;
 }
 .habitacion img{
     width: 50%;
     padding-right: 2em;
 }
-h2{
-    padding-top: 0.5em;
+.habitacion h2{
+    margin: 2em 0;
 }
 .habitacion div{
     display: flex;
     flex-direction: column;
 }
 #formulario{
-    padding: 0 8em;
+    margin: 4em 8em;
+    text-align: center;
 }
-h3{
-    padding-bottom: 0.5em;
+#formulario h3{
+    margin-bottom: 1em;
+    text-align: center;
 }
 #alertFecha{
     width: fit-content;
 }
-#boton{
-    margin: 1em 0 1em 32em;
+#formulario label{
+    text-align: left;
 }
-#botonCancelar{
-    margin: 1em 0 1em 28em;
+#reservaHecha, #datosReserva, #reservaCancelada{
+    padding: 0;
+    text-align: left;
+}
+
+@media screen and (max-width: 767px){
+    nav{
+        justify-content: left;
+    }
+    nav div img{
+        width: 200%;
+    }
+    #servicios{
+        width: 80%;
+    }
+    .habitacion{
+        flex-direction: column;
+        margin: 0 2em 2em 2em;
+    }
+    .habitacion img{
+        width: 100%;
+        padding: 0;
+    }
+    .habitacion div{
+        margin: 1em;
+    }
+    .habitacion h2{
+        margin: 1em 0;
+    }
+    #formulario{
+        margin: 4em 2em;
+    }
 }

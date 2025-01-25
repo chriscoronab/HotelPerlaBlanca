@@ -1,21 +1,21 @@
 {
   "name": "hotel-perla-blanca",
   "version": "1.0.0",
-  "description": "Hotel Perla Blanca | Sitio web interactivo utilizando Javascript creado por Christian Corona",
+  "description": "Hotel Perla Blanca | Sitio web interactivo utilizando JavaScript creado por Christian Corona",
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chriscoronab/PF-Corona.git"
+    "url": "git+https://github.com/chriscoronab/HotelPerlaBlanca.git"
   },
   "author": "Christian Corona",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chriscoronab/PF-Corona/issues"
+    "url": "https://github.com/chriscoronab/HotelPerlaBlanca/issues"
   },
-  "homepage": "https://github.com/chriscoronab/PF-Corona#readme",
+  "homepage": "https://github.com/chriscoronab/HotelPerlaBlanca#readme",
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
     "sweetalert2": "^11.7.0"

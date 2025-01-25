@@ -10,10 +10,10 @@
     <meta name="copyright" content="Christian Corona">
     <meta property="og:title" content="Hotel Perla Blanca">
     <meta property="og:site_name" content="Hotel Perla Blanca">
-    <meta property="og:url" content="https://chriscoronab.github.io/PF-Corona/">
+    <meta property="og:url" content="https://chriscoronab.github.io/HotelPerlaBlanca">
     <meta property="og:description" content="Sitio web del Hotel Perla Blanca con información de habitaciones y reservas">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://raw.githubusercontent.com/chriscoronab/PF-Corona/master/assets/img/hotel.jpg">
+    <meta property="og:image" content="https://raw.githubusercontent.com/chriscoronab/HotelPerlaBlanca/master/assets/img/hotel.jpg">
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon-16x16.png">
@@ -27,9 +27,9 @@
     <header>
         <nav>
             <div>
-                <a href="#"><img id="logo" src="./assets/img/logo.png" alt="logo"></a>
-                <h1 class="fuenteTitulo">Hotel Perla Blanca</h1>
+                <a href="#"><img src="./assets/img/logo.png" alt="logo"></a>
             </div>
+            <h1 class="fuenteTitulo">Hotel Perla Blanca</h1>
         </nav>
     </header>
     <main class="fuenteRegular">
@@ -51,13 +51,13 @@
                 </div>
             </div>
             <div id="servicios">
-                <p>Contamos con Habitaciones Dobles, Triples, Cuádruples y Suite. Todas cuentan con Wi-Fi, baño privado, aire acondicionado, equipadas con sommier matrimonial o camas individuales, cerradura electrónica, TV con cable, caja de seguridad individual, secador de pelo, frigobar, pava eléctrica, etc.
+                <p>Contamos con habitaciones dobles, triples, cuádruples y suite. Todas cuentan con Wi-Fi, baño privado, aire acondicionado, equipadas con sommier matrimonial o camas individuales, cerradura electrónica, TV con cable, caja de seguridad individual, secador de pelo, frigobar, pava eléctrica, etc.
                 <br>
                 <br>
                 Además, contamos con estacionamiento cubierto, salón comedor con buffet, quincho con aire y calefacción, parrillas bajo techo, pileta y vestuarios, cancha de vóley, fútbol, sala de juegos con pool, metegol y ping pong.
                 <br>
                 <br>
-                Para reservar una habitación en el Hotel Perla Blanca, debes completar este <string><a href="#formulario" title="formulario">formulario</a></string>.</p>
+                Para reservar una habitación en el Hotel Perla Blanca, debes completar este <strong><a href="#formulario" >formulario</a></strong>.</p>
             </div>
         </section>
         <section id="habitaciones"></section>
@@ -103,9 +103,9 @@
                     <label for="tipoHabitacion" class="col-sm-2 col-form-label">Tipo de habitación</label>
                     <div class="col-sm-10">
                         <select class="form-control" onchange="cambiarPrecioNoche(this.value);" id="tipoHabitacion" name="tipoHabitacion" required>
-                            <option id="habitacionDoble" value="Habitación Doble">Habitación Doble</option>
-                            <option id="habitacionTriple" value="Habitación Triple">Habitación Triple</option>
-                            <option id="habitacionCuadruple" value="Habitación Cuádruple">Habitación Cuádruple</option>
+                            <option id="habitacionDoble" value="Habitación Doble">Habitación doble</option>
+                            <option id="habitacionTriple" value="Habitación Triple">Habitación triple</option>
+                            <option id="habitacionCuadruple" value="Habitación Cuádruple">Habitación cuádruple</option>
                             <option id="suite" value="Suite">Suite</option>
                         </select>
                     </div>
@@ -113,14 +113,14 @@
                 <div class="row mb-3">
                     <label for="fechaIngreso" class="col-sm-2 col-form-label">Fecha de ingreso</label>
                     <div class="col-sm-10">
-                        <input type="date" class="form-control" id="fechaIngreso" name="fechaIngreso" min="2023-01-23" max="2023-12-31" required>
+                        <input type="date" class="form-control" id="fechaIngreso" name="fechaIngreso" required>
                     </div>
                 </div>
                 <div id="alertFecha"></div>
                 <div class="row mb-3">
                     <label for="fechaSalida" class="col-sm-2 col-form-label">Fecha de salida</label>
                     <div class="col-sm-10">
-                        <input type="date" class="form-control" oninput="calcularNoches()" id="fechaSalida" name="fechaSalida" min="2023-01-24" max="2023-12-31" required>
+                        <input type="date" class="form-control" oninput="calcularNoches()" id="fechaSalida" name="fechaSalida" required>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -145,16 +145,16 @@
                         </select>
                     </div>
                 </div>
-                <div>
+                <div class="button">
                     <button id="boton" type="submit" class="btn btn-primary">Reservar</button>
                 </div>
             </form>
         </section>
     </main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-</script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="./js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>

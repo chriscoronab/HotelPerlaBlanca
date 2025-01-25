@@ -1,14 +1,14 @@
-const habitaciones=[];
+const habitaciones = [];
 
-class Habitacion{
-    constructor(id, nombre, precio, imagen, maximo){
-        this.id=id;
-        this.nombre=nombre;
-        this.precio=precio;
-        this.imagen=imagen;
-        this.maximo=maximo;
-    }
-    desplegarHabitacion(){
+class Habitacion {
+    constructor(id, nombre, precio, imagen, maximo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.imagen = imagen;
+        this.maximo = maximo;
+    };
+    desplegarHabitacion() {
         const article=`<article class="habitacion">
         <img src=${this.imagen}>
         <div>
@@ -17,87 +17,86 @@ class Habitacion{
             <p>Máximo ${this.maximo} personas</p>
         </div>
         </article>`;
-    const sectionHabitaciones=document.querySelector("#habitaciones");
-    sectionHabitaciones.innerHTML+=article;
-    }
+    const sectionHabitaciones = document.querySelector("#habitaciones");
+    sectionHabitaciones.innerHTML += article;
+    };
 };
 
 fetch("./data.json")
-.then(response=>response.json())
-.then(data=>{
-    data.forEach(hab=>{
-        let newHabitacion=new Habitacion(hab.id, hab.nombre, hab.precio, hab.imagen, hab.maximo);
-        habitaciones.push(newHabitacion);
-    })
-    habitaciones.forEach(e=>{
-        e.desplegarHabitacion();
-    })
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(hab => {
+            let newHabitacion = new Habitacion(hab.id, hab.nombre, hab.precio, hab.imagen, hab.maximo);
+            habitaciones.push(newHabitacion);
+        });
+        habitaciones.forEach(e => { 
+            e.desplegarHabitacion();
+        });
 });
 
-let formulario=document.querySelector("#formulario");
-let nombreTitular=document.querySelector("#nombreApellido");
-let correoElectronico=document.querySelector("#correoElectronico");
-let telefono=document.querySelector("#telefono");
-let cantidadPersonas=document.querySelector("#cantidadPersonas");
-let tipoHabitacion=document.querySelector("#tipoHabitacion");
-let metodoPago=document.querySelector("#metodoPago");
-let datosReserva=document.querySelector("#datosReserva");
-let numeroReserva=Math.round(Math.random()*5000);
-let boton=document.querySelector("#boton");
-let alertFecha=document.querySelector("#alertFecha");
-let reservaHecha=document.querySelector("#reservaHecha");
-let inputsFormulario=document.querySelector("#inputsFormulario");
-let botonCancelar=document.querySelector("#botonCancelar");
-let reservaCancelada=document.querySelector("#reservaCancelada");
-let precioNoche=35;
+let formulario = document.querySelector("#formulario");
+let nombreTitular = document.querySelector("#nombreApellido");
+let correoElectronico = document.querySelector("#correoElectronico");
+let telefono = document.querySelector("#telefono");
+let cantidadPersonas = document.querySelector("#cantidadPersonas");
+let tipoHabitacion = document.querySelector("#tipoHabitacion");
+let metodoPago = document.querySelector("#metodoPago");
+let datosReserva = document.querySelector("#datosReserva");
+let numeroReserva = Math.round(Math.random()*5000);
+let boton = document.querySelector("#boton");
+let alertFecha = document.querySelector("#alertFecha");
+let reservaHecha = document.querySelector("#reservaHecha");
+let inputsFormulario = document.querySelector("#inputsFormulario");
+let botonCancelar = document.querySelector("#botonCancelar");
+let reservaCancelada = document.querySelector("#reservaCancelada");
+let precioNoche = 35;
 
-function calcularNoches(){
-    let fechaIngreso=new Date(document.querySelector("#fechaIngreso").value);
-    let fechaSalida=new Date(document.querySelector("#fechaSalida").value);
-    if(fechaSalida>fechaIngreso){
-        let cantidadNoches=fechaSalida.getTime()-fechaIngreso.getTime();
-        document.querySelector("#cantidadNoches").value=Math.round(cantidadNoches/(1000*60*60*24));
+function calcularNoches() {
+    let fechaIngreso = new Date(document.querySelector("#fechaIngreso").value);
+    let fechaSalida = new Date(document.querySelector("#fechaSalida").value);
+    if (fechaSalida > fechaIngreso) {
+        let cantidadNoches = fechaSalida.getTime() - fechaIngreso.getTime();
+        document.querySelector("#cantidadNoches").value = Math.round(cantidadNoches / (1000 * 60 * 60 * 24));
         calcularPrecioTotal();
-    }else if(fechaSalida!=null&&fechaSalida<fechaIngreso){
-        alertFecha.innerHTML=`<div class="alert alert-danger" role="alert"><p>
-        La fecha de salida debe ser mayor a la fecha de ingreso</p></div>`;
+    } else if (fechaSalida != null &&fechaSalida < fechaIngreso) {
+        alertFecha.innerHTML=`<div class="alert alert-danger" role="alert"><p>La fecha de salida debe ser mayor a la fecha de ingreso</p></div>`;
         document.querySelector("#cantidadNoches").value=0;
-    }
+    };
 };
 
-function deshabilitarOpciones(value){
-	if(value=="3"||value==false){
-        document.querySelector("#habitacionDoble").hidden=true;
-        document.querySelector("#tipoHabitacion").value=null;
-        document.querySelector("#habitacionTriple").hidden=false;
-	}else if(value=="4"||value==false){
-        document.querySelector("#habitacionDoble").hidden=true;
-		document.querySelector("#habitacionTriple").hidden=true;
-        document.querySelector("#tipoHabitacion").value=null;
-	}else{
-        document.querySelector("#habitacionDoble").hidden=false;
-		document.querySelector("#habitacionTriple").hidden=false;
-    }
+function deshabilitarOpciones(value) {
+	if (value == "3" || value == false) {
+        document.querySelector("#habitacionDoble").hidden = true;
+        document.querySelector("#tipoHabitacion").value = null;
+        document.querySelector("#habitacionTriple").hidden = false;
+	} else if (value == "4"|| value == false) {
+        document.querySelector("#habitacionDoble").hidden = true;
+		document.querySelector("#habitacionTriple").hidden = true;
+        document.querySelector("#tipoHabitacion").value = null;
+	} else {
+        document.querySelector("#habitacionDoble").hidden = false;
+		document.querySelector("#habitacionTriple").hidden = false;
+    };
 };
 
-function cambiarPrecioNoche(value){
-    if(value=="Habitación Triple"){
-        precioNoche=40;
-    }else if(value=="Habitación Cuádruple"){
-        precioNoche=50;
-    }else if(value=="Suite"){
+function cambiarPrecioNoche(value) {
+    if (value == "Habitación Triple") {
+        precioNoche = 40;
+    } else if (value == "Habitación Cuádruple") {
+        precioNoche = 50;
+    } else if (value == "Suite") {
         precioNoche=85;
-    }
+    };
 };
 
-function calcularPrecioTotal(){
-    let precioTotal=precioNoche*(document.querySelector("#cantidadNoches").value);
-    document.querySelector("#precioTotal").value=precioTotal;
-}
+function calcularPrecioTotal() {
+    let precioTotal = precioNoche * (document.querySelector("#cantidadNoches").value);
+    document.querySelector("#precioTotal").value = precioTotal;
+};
 
-function enviarMail(){
+function enviarMail() {
     emailjs.init("XKf7V2J_ZwcECDBKV");
-    emailjs.send("service_fy5or3h","template_2jga7o2",{
+    emailjs.send("service_fy5or3h","template_2jga7o2", {
         numeroReserva: numeroReserva,
         nombreTitular: nombreTitular.value,
         cantidadPersonas: cantidadPersonas.value,
@@ -107,10 +106,10 @@ function enviarMail(){
         cantidadNoches: cantidadNoches.value,
         precioTotal: precioTotal.value,
         metodoPago: metodoPago.value
-        });
+    });
 };
 
-formulario.addEventListener("submit", function (e){
+formulario.addEventListener("submit", function (e) {
     e.preventDefault();
     enviarMail();
     Swal.fire({
@@ -118,8 +117,8 @@ formulario.addEventListener("submit", function (e){
         icon: "success",
         confirmButtonText: "OK"
     });
-    alertFecha.innerHTML=`<div class="alert alert-danger d-none" role="alert"></div>`;
-    datosReserva.innerHTML=`
+    alertFecha.innerHTML = `<div class="alert alert-danger d-none" role="alert"></div>`;
+    datosReserva.innerHTML = `
     <div class="alert alert-success" role="alert"><p>¡Gracias por confiar en nosotros! Te enviamos un correo a ${correoElectronico.value} con los datos de tu reserva 😉
     <br>
     <br>
@@ -146,14 +145,14 @@ formulario.addEventListener("submit", function (e){
     <br>
     No olvides presentarte en recepción al momento de hacer el check-in con los respectivos DNI para validar los datos.</p>
     </div>`;
-    inputsFormulario.innerHTML=`<form id="inputsFormulario" class="container d-none">`;
-    botonCancelar.innerHTML=`<button type="button" class="btn btn-danger">Cancelar Reserva</button>`;
+    inputsFormulario.innerHTML = `<form id="inputsFormulario" class="container d-none">`;
+    botonCancelar.innerHTML = `<button type="button" class="btn btn-danger">Cancelar reserva</button>`;
 });
 
-const reservas=[];
+const reservas = [];
 
-boton.addEventListener("click", ()=>{
-    const reserva={
+boton.addEventListener("click", () => {
+    const reserva = {
         "nombre": nombreTitular.value,
         "email": correoElectronico.value,
         "telefono": telefono.value,
@@ -165,34 +164,34 @@ boton.addEventListener("click", ()=>{
         "precio": parseInt(precioTotal.value),
         "pago": metodoPago.value,
         "numero reserva": numeroReserva
-    }
+    };
     reservas.push(reserva);
     localStorage.setItem("reserva", JSON.stringify(reserva));
     sessionStorage.setItem("reserva", JSON.stringify(reserva));
 });
 
-function recuperarDatosReserva(storage){
-    let datosReservaRecuperados=JSON.parse(storage.getItem("reserva"));
+function recuperarDatosReserva(storage) {
+    let datosReservaRecuperados = JSON.parse(storage.getItem("reserva"));
     return datosReservaRecuperados;
 };
 
-function yaReservo(reserva){
-    if(reserva){
-        reservaHecha.innerHTML=`<div class="alert alert-success" role="alert"><p>¡Hola, ${reserva.nombre}! Ya tienes una reserva hecha en el Hotel Perla Blanca desde el ${reserva.ingreso} hasta el ${reserva.salida}.</p></div>`;
-        inputsFormulario.innerHTML=`<form id="inputsFormulario" class="container d-none">`;
-        botonCancelar.innerHTML=`<button type="button" class="btn btn-danger">Cancelar Reserva</button>`;
-    }
+function yaReservo(reserva) {
+    if (reserva) {
+        reservaHecha.innerHTML = `<div class="alert alert-success" role="alert"><p>¡Hola, ${reserva.nombre}! Ya tienes una reserva hecha en el Hotel Perla Blanca desde el ${reserva.ingreso} hasta el ${reserva.salida}.</p></div>`;
+        inputsFormulario.innerHTML = `<form id="inputsFormulario" class="container d-none">`;
+        botonCancelar.innerHTML = `<button type="button" class="btn btn-danger">Cancelar reserva</button>`;
+    };
 };
 
-window.onload=()=>{
+window.onload = () => {
     yaReservo(recuperarDatosReserva(localStorage));
 };
 
-botonCancelar.addEventListener("click", ()=>{
+botonCancelar.addEventListener("click", () => {
     localStorage.clear();
     sessionStorage.clear();
-    datosReserva.innerHTML=`<div class="alert alert-success d-none" role="alert"></div>`;
-    reservaHecha.innerHTML=`<div class="alert alert-success d-none" role="alert"></div>`;
-    botonCancelar.innerHTML=`<button id="botonCancelar" type="button" class="btn btn-danger d-none"></button>`;
-    reservaCancelada.innerHTML=`<div class="alert alert-danger" role="alert"><p>Lamentamos tu decisión 😢 Tu reserva ha sido cancelada. Si deseas volver a reservar una habitación, recarga la página.</p></div>`;
+    datosReserva.innerHTML = `<div class="alert alert-success d-none" role="alert"></div>`;
+    reservaHecha.innerHTML = `<div class="alert alert-success d-none" role="alert"></div>`;
+    botonCancelar.innerHTML = `<button id="botonCancelar" type="button" class="btn btn-danger d-none"></button>`;
+    reservaCancelada.innerHTML = `<div class="alert alert-danger" role="alert"><p>Lamentamos tu decisión 😢 Tu reserva ha sido cancelada. Si deseas volver a reservar una habitación, recarga la página.</p></div>`;
 });
